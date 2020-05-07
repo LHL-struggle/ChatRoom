@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>聊天界面</title>
+    <!--<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>-->
+    <style>
+        #d {
+            width: 300px;
+            height: 400px;
+            border: 1px solid #00f;
+            margin: 0px auto;
+        }
+        #p {
+            width: 300px;
+            height: 30px;
+            background: blue;
+            text-align: center;
+            margin: 0px auto;
+            color: red;
+        }
+        #p1 {
+            width: 300px;
+            height: 250px;
+            margin: 0px auto;
+            border-bottom: 10px solid blue;
+            overflow-y:scroll;
+        }
+
+        #content {
+            width: 230px;
+            height: 100px;
+            margin: 0px auto;
+        }
+
+        #b {
+            margin: 0px;
+            width: 55px;
+            height: 105px;
+        }
+
+        #yc {
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="yc">{{addresser}}</div>
+    <div id="d">
+        <div id="p"><span id="uname">{{uname}}</span></div>
+        <div id="p1"></div>
+        <table>
+            <tr>
+                <td><textarea id="content" name="content"></textarea></td>
+                <td><button type="button" id="b">发送</button></td>
+            </tr>
+        </table>
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/friend_chat.js')}}"></script>
+</body>
+</html>

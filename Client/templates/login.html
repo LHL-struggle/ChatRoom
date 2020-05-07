@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>登录界面</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        $(function(){
+            // 定义一个全局变量can_submit 初始值为false，表不能提交
+            var can_submit = false;
+
+            // 提交事件，只有当can_submit返回true才能成功提交
+            $("form").submit(function(){
+                return can_submit;
+            });
+
+            // blur()方法的作用：添加函数到blur事件，当<input>字段失去焦点时发生blur事件
+            $('input[name="user_name"]').blur(function(){
+                // 获取user_name的值
+                var user_name = $(this).val();
+                // 去除用户名的空格
+                user_name = user_name.replace(/^\s+|\s+$/gm, '');
+
+                // 如果用户名为空
+                if(user_name === ''){
+                    // 在id=uname_tips的元素上写入提示信息
+                    $("#uname_tips").text("用户名不能为空");
+                    $("#uname_tips").css("color", "red");
+                    // 并且将can_submit设置为false
+                    can_submit = false;
+                    return;
+                }
+
+                if (user_name.length < 6 || user_name.length >15){
+                    $("#uname_tips").text("用户名太长或太短！");
+                    can_submit = false;
+                    return;
+                }
+
+                // 通过AJAX发送请求给服务器以校验用户名是否已经存在
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=UTF-8",
+                    dataType: "json",
+                    url: "/check_uname",
+                    data: "user_name=" + user_name,
+                    timeout: 1000,
+                    success: function(data){
+                        console.log(data);
+                        if (data["err"] === 0) {
+                            $("#uname_tips").css("color", "red");
+                            $("#uname_tips").css("font-weight", "bold");
+                            $("#uname_tips").text('没有该用户');
+                            can_submit = false;
+                        }
+                        else {
+                            $("#uname_tips").css("color", "green");
+                            $("#uname_tips").text('√');
+
+                        }
+                    },
+                    error: function () {}
+                });
+            });
+
+            $('input[name="user_pwd"]').blur(function(){
+                var user_pwd = $(this).val();
+                user_pwd = user_pwd.replace(/^\s+|\s+$/gm, '');
+                if(user_pwd === ''){
+                    $("#upwd_tips").css("color","red");
+                    $("#upwd_tips").text('密码不能为空')
+                    can_submit = false;
+                    return;
+                }
+                if(user_pwd.length < 6 || user_pwd.length > 15){
+                    $("#upwd_tips").css("color","red");
+                    $("#upwd_tips").text("密码过长或过短");
+                    can_submit = false;
+                    return;
+                }
+                else{
+                    $("#upwd_tips").css("color","green");
+                    $("#upwd_tips").text('√');
+                    can_submit = true;
+                }
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <h1>登录界面</h1><hr>
+    <div>
+        <form method="post" action="/login">
+            <table>
+                <tr><td>用户名：</td><td><input type="text" name="user_name" placeholder="请输入6到15字符"><span id="uname_tips" style="margin-left:5px"></span></td></tr>
+                <tr><td>密码：</td><td><input type="password" name="user_pwd" placeholder="请输入6到15字符"><span id="upwd_tips" style="margin-left:5px"></span></td></tr>
+                <tr><td><button type="submit">登录</button></td><td><a href="register">注册</a></td></tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

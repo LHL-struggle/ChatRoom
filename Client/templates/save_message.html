@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>修改及保存个人信息界面</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <style>
+        textarea {
+            vertical-align:top;
+        }
+        span {
+            margin_left:5px;
+        }
+        label{
+            display:inline-block;
+            width:80px;
+        }
+        #d1 {
+            width:500px;
+            min-width:500px;
+            margin:0px auto;
+        }
+        h1{
+            text-align:center;
+        }
+        input:last-child{
+            margin-left:430px;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">
+        <h1>信息填写界面</h1><hr>
+        <form method="post" action="/save_message">
+            <label>&nbsp;&nbsp;&nbsp;用户名：</label><input type="text" value={{uname}} readonly><br><br>
+            <label>个人签名：</label><textarea name="sign" rows="5" cols="50" placeholder="最大长度70个字符"></textarea><span id="t1"></span><br><br>
+            <label>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</label><input type="radio" name="gender" value="男" checked>男<input type="radio" name="gender" value="女">女<span id="t2"></span><br><br>
+            <label>生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：</label><input type="date" name="birthday" value="1997-02-15"><span id="t3"></span><br><br>
+            <label>家庭住址：</label><textarea name="home" rows="1" cols="50"></textarea><span id="t4"></span><br><br>
+            <label>在读院校：</label><textarea name="school" rows="1" cols="50"></textarea><span id="t5"></span><br><br>
+            <label>从事职业：</label><textarea name="professional" rows="1" cols="50"></textarea><span id="t6"></span><br><br>
+            <label>个人说明：</label><textarea name="elucidation" rows="10" cols="50" placeholder="最大长度150个字符"></textarea><span id="t7"></span><br><br>
+            <input id="sub" type="submit" value="save">
+        </form>
+    </div>
+</body>
+</html>

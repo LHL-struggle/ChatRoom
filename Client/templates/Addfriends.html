@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>添加好友</title>
+    <style type="text/css"> a {text-decoration:none;} </style>
+</head>
+<body>
+    <h1>添加好友</h1>
+    <table border="1" cellpadding="10">
+        <tr><th>用户名</th><th>添加好友</th></tr>
+        {% for x in content %}
+        <tr><td><a href="/personal_show?uname={{x[0]}}">{{x[0]}}</a></td><td><a href="/addf?uname={{x[0]}}">添加好友</a></td></tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

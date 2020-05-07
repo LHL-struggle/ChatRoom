@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>群聊界面</title>
+    <style>
+        #ycc {
+            display:none;
+        }
+        #d {
+            width: 300px;
+            height: 400px;
+            border: 1px solid #00f;
+            margin: 0px auto;
+        }
+        #p {
+            width: 300px;
+            height: 30px;
+            background: blue;
+            text-align: center;
+            margin: 0px auto;
+            color: red;
+        }
+        #p1 {
+            width: 300px;
+            height: 250px;
+            margin: 0px auto;
+            border-bottom: 10px solid blue;
+            overflow-y:scroll;
+        }
+
+        #content {
+            width: 230px;
+            height: 100px;
+            margin: 0px auto;
+        }
+        #b {
+            margin: 0px;
+            width: 55px;
+            height: 105px;
+        }
+    </style>
+</head>
+<body>
+    <div id="ycc">{{addresser}}</div>
+    <div id="d">
+        <p id="p"><span>群聊</span></p>
+        <p id="p1"></p>
+        <table>
+            <tr>
+                <td><textarea id="content" name="content"></textarea></td>
+                <td><button type="button" id="b">发送</button></td>
+            </tr>
+        </table>
+
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/group_chat.js')}}"></script>
+</body>
+</html>

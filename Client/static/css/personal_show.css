@@ -1,0 +1,68 @@
+#d {
+    width:500px;
+    min-width:500px;
+    margin:0px auto;
+    border: 1px solid #f0f;
+}
+
+#d1 {
+    width:auto;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    color:red;
+    font-size: 20px;
+    font-weight:700;
+}
+
+#d2 {
+    width:auto;
+    height:80px;
+    background:blue;
+    color:	#00FA9A;
+}
+
+#d3 {
+    width:auto;
+    height:50px;
+    line-height:50px;
+    color:yellow;
+    background:green;
+}
+
+#d4 {
+    width:auto;
+    height:50px;
+    line-height:50px;
+    color:yellow;
+    background:#f0f;
+}
+
+#d5 {
+    width:auto;
+    height:50px;
+    line-height:50px;
+    color:#fff;
+    background:gray;
+}
+
+#d6 {
+    width:auto;
+    height:50px;
+    line-height:50px;
+}
+
+#d7 {
+    width:auto;
+    height:50px;
+    line-height:50px;
+    color:blue;
+    background:#7B68EE;
+}
+
+#d8 {
+    width:auto;
+    height:120px;
+    color:#808080;
+    background:#8B4513;
+}

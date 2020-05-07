@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>好友界面</title>
+    <style type="text/css"> a {text-decoration:none;} </style>
+</head>
+<body>
+    <h1>好友</h1>
+    <table border="1" cellpadding="10">
+        <tr><th>用户名</th><th>进入聊天</th><th>删除好友</th></tr>
+        {% for x in content %}
+        <tr><td><a href="/personal_show?uname={{x}}">{{x}}</a></td><td><a href="/friend_chat?uname={{x}}">进入聊天</a></td><td><a href="/del_friend?friend_name={{x}}">删除好友</a></td></tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
